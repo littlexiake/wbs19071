@@ -3,7 +3,21 @@ let gulp = require("gulp");
 
 let app = {
     src:"./node_modules/bootstrap",
-    dist:"./node_modules/bootstrap/dist"
+    dist:"./node_modules/bootstrap/dist",
+    js: [
+        './node_modules/bootstrap/js/transition.js',
+        './node_modules/bootstrap/js/alert.js',
+        './node_modules/bootstrap/js/button.js',
+        './node_modules/bootstrap/js/carousel.js',
+        './node_modules/bootstrap/js/collapse.js',
+        './node_modules/bootstrap/js/dropdown.js',
+        './node_modules/bootstrap/js/modal.js',
+        './node_modules/bootstrap/js/tooltip.js',
+        './node_modules/bootstrap/js/popover.js',
+        './node_modules/bootstrap/js/scrollspy.js',
+        './node_modules/bootstrap/js/tab.js',
+        './node_modules/bootstrap/js/affix.js'
+    ],
 }
 
 
@@ -21,9 +35,10 @@ gulp.task("copy",function(done) {
 let { default: jsmin } = require("gulp-uglify-es");
 let concat = require("gulp-concat");
 gulp.task("concat",function(done) {
-    gulp.src(`${app.src}/js/*.js`)
+    gulp.src(app.js)
         .pipe(concat("bootstrap.js"))
         .pipe(jsmin())
+        .pipe(rename("bootstrap.min.js"))
         .pipe(gulp.dest(app.dist + "/js"));
     done();
 });
@@ -44,3 +59,5 @@ gulp.task("less",function(done) {
         .pipe(gulp.dest(app.dist + "/css"));
     done();
 });
+
+gulp.task("default", gulp.series("copy", "concat", "less"));
