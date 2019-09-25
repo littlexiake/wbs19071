@@ -1,0 +1,23 @@
+// @w :10;
+// @w:0.5;
+@w:19.5;
+@fc:orange;
+
+.hello1 {
+    color:lighten(@fc,30%);
+    border:1px solid lightgray;
+};
+
+.hello2 {
+    color:@fc;
+    border:1px solid lightgray;
+    // width:@w;
+    // width:unit(@w,cm);
+    width:percentage(@w);
+    width:unit(ceil(@w),cm);
+};
+
+.hello3 {
+    color:darken(@fc,10%);
+    border:1px solid lightgray;
+}

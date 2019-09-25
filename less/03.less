@@ -1,0 +1,14 @@
+.setDiv(@color:pink,@border:1px) {
+    font-style:italic;
+    text-decoration: underline;
+    border:@border solid @color;
+    color:@color;
+}
+
+.hello {
+    .setDiv()
+};
+
+.hi {
+    .setDiv(pink, 5px)
+};

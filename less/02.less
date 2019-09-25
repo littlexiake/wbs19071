@@ -1,0 +1,15 @@
+@fc:red;
+
+.hi{
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.welcome {
+    border:1px solid @fc;
+}
+.hello {
+    .hi;
+    .welcome;
+    color:@fc;
+}
